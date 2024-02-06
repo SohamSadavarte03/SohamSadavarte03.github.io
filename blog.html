@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: #f2f2f2;
+        margin: 0;
+        flex-direction: column;
+
+    }
+
+    .container,
+    .container1 {
+        background: #fff;
+        padding: 20px;
+        font-family: monospace;
+        box-shadow: 0 0 5px #000;
+        border-radius: 5%;
+        margin: 10px;
+        max-width: 600px;
+        width: 100%;
+
+    }
+
+    .head,
+    .head1 {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    .text,
+    .text1 {
+        margin: 10px 0;
+        font-family: sans-serif;
+        font-size: 0.9em;
+    }
+
+    .commentbox,
+    .commentbox1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .commentbox>img,
+    .commentbox1>img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .commentinput>input,
+    .commentinput1>input {
+        border: none;
+        padding: 10px;
+        padding-left: 0;
+        outline: none;
+        border-bottom: 2px solid blue;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .buttons,
+    .buttons1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #808080;
+        margin-top: 10px;
+    }
+
+    .buttons>button,
+    .buttons1>button {
+        padding: 5px 10px;
+        background: lightgrey;
+        color: #808080;
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .buttons>button.abled,
+    .buttons1>button.abled {
+        background: blue;
+        color: #fff;
+    }
+
+    .policy,
+    .policy1 {
+        margin: 20px 0;
+        font-size: 0.8em;
+        font-family: Arial, sans-serif;
+        color: #808080;
+    }
+
+    .policy a,
+    .policy1 a {
+        text-decoration: none;
+        color: blue;
+    }
+
+    .parents,
+    .parents1 {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .parents h1,
+    .parents1 h1 {
+        font-size: 1em;
+    }
+
+    .parents p,
+    .parents1 p {
+        margin: 10px 0;
+        font-size: 0.9em;
+        display: flex;
+        flex-direction: column;
+        word-wrap: break-word;
+    }
+
+    .parents>img,
+    .parents1>img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .engagements,
+    .engagements1 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .engagements img,
+    .engagements1 img {
+        width: 20px;
+    }
+
+    .engagements img:nth-child(1),
+    .engagements1 img:nth-child(1) {
+        margin-right: 10px;
+        width: 25px;
+    }
+
+    .date,
+    .date1 {
+        color: #808080;
+        font-size: 0.8em;
+    }
+
+    #clicklike,
+    #clicklike1 {
+        margin-left: 0%;
+        background: blue;
+        color: #fff;
+    }
+
+    #like,
+    #like1 {
+        margin-right: 0;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: #f2f2f2;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container,
+        .container1 {
+            max-width: 100%;
+            width: 85%;
+            margin-top: 10%;
+        }
+
+        .buttons,
+        .buttons1 {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .buttons>button,
+        .buttons1>button {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .commentbox>img,
+        .commentbox1>img,
+        .parents>img,
+        .parents1>img {
+            margin-right: 0;
+        }
+
+         #clicklike,
+        #clicklike1 {
+            margin-left: 0%;
+            background: blue;
+            color: #fff;
+        }
+
+    }
+
+    .blog {
+        font-size: 300%;
+        margin-bottom: 5%;
+        color: #000;
+        display: flex;
+        flex-direction: row;
+        font-family: monospace;
+    }
+</style>
+
+<body>
+
+    <h2 class="blog"> My Blogs</h2>
+
+    <div class="container">
+        <div class="head">
+            <h1>Blog-1</h1>
+            <br>
+            <h3>This is Blog-1.</h3>
+        </div>
+        <div><span id="comment">0</span> Comments</div>
+        <div class="text">
+        </div>
+        <div class="comments"></div>
+        <div class="commentbox">
+            <div class="content">
+                <h2>Comment: </h2>
+
+                <div class="commentinput">
+                    <input type="text" placeholder="Enter comment" class="usercomment">
+                    <div class="buttons">
+                        <button type="submit" id="publish">Publish</button>
+                        <button type="submit" id="clicklike" onclick="increaseLike('like', 'clicklike')">LIKED</button>
+                        <div id="like">16</div>
+                        <div class="notify">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="head1">
+            <h1>Blog-2</h1>
+            <br>
+            <h3>This is Blog-2.</h3>
+        </div>
+        <div><span id="comment1">0</span> Comments</div>
+        <div class="text1">
+        </div>
+        <div class="comments1"></div>
+        <div class="commentbox1">
+            <div class="content1">
+                <h2>Comment:</h2>
+
+                <div class="commentinput1">
+                    <input type="text" placeholder="Enter comment" class="usercomment1">
+                    <div class="buttons1">
+                        <button type="submit" disabled id="publish1">Publish</button>
+                        <button type="submit" id="clicklike1" onclick="increaseLike('like1', 'clicklike1')">LIKED</button>
+                        <div id="like1">54</div>
+                        <div class="notify">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            loadComments();
+            loadComments1();
+            loadLikeState('clicklike', 'like');
+            loadLikeState('clicklike1', 'like1');
+        };
+
+        const USERID = {
+            name: null,
+            identity: null,
+            image: null,
+            message: null,
+            date: null
+        };
+
+        const USERID1 = {
+            name: null,
+            identity: null,
+            image: null,
+            message: null,
+            date: null
+        };
+
+        const userComment = document.querySelector(".usercomment");
+        const publishBtn = document.querySelector("#publish");
+        const comments = document.querySelector(".comments");
+        const like = document.querySelector("#like");
+
+        const userComment1 = document.querySelector(".usercomment1");
+        const publishBtn1 = document.querySelector("#publish1");
+        const comments1 = document.querySelector(".comments1");
+        const like1 = document.querySelector("#like1");
+
+        function loadComments() {
+            const storedComments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments.innerHTML = storedComments.join("");
+            updateCommentCount(comments, "comment");
+        }
+
+
+        function loadComments1() {
+            const storedComments1 = JSON.parse(localStorage.getItem("comments1")) || [];
+            comments1.innerHTML = storedComments1.join("");
+            updateCommentCount(comments1, "comment1");
+        }
+
+
+        function updateCommentCount(container, countId) {
+            const commentsNum = container.querySelectorAll(".parents, .parents1").length;
+            document.getElementById(countId).textContent = commentsNum;
+        }
+
+        function saveComments(commentsArray, key) {
+            localStorage.setItem(key, JSON.stringify(commentsArray));
+        }
+
+
+        userComment.addEventListener("input", handleInput);
+        publishBtn.addEventListener("click", addPost);
+
+        userComment1.addEventListener("input", handleInput1);
+        publishBtn1.addEventListener("click", addPost1);
+
+        document.querySelector("#clicklike").addEventListener("click", increaseLike);
+        document.querySelector("#clicklike1").addEventListener("click", increaseLike1);
+
+        function handleInput() {
+            enableDisableButton(userComment, publishBtn);
+        }
+
+        function handleInput1() {
+            enableDisableButton(userComment1, publishBtn1);
+        }
+
+        function enableDisableButton(commentInput, publishButton) {
+            if (!commentInput.value) {
+                publishButton.setAttribute("disabled", "disabled");
+                publishButton.classList.remove("abled");
+            } else {
+                publishButton.removeAttribute("disabled");
+                publishButton.classList.add("abled");
+            }
+        }
+
+        function addPost() {
+            if (!userComment.value) return;
+
+            USERID.message = userComment.value;
+            USERID.date = new Date().toLocaleString();
+            const published = `<div class="parents">
+            <div>
+                <p>${USERID.message}</p>
+                <span class="date">${USERID.date}</span>
+            </div>
+        </div>`;
+
+            comments.innerHTML += published;
+            userComment.value = "";
+            publishBtn.classList.remove("abled");
+
+            saveComments(getCommentsArray(comments), "comments");
+            updateCommentCount(comments, "comment");
+        }
+
+        function addPost1() {
+            if (!userComment1.value) return;
+
+            USERID1.message = userComment1.value;
+            USERID1.date = new Date().toLocaleString();
+            const published = `<div class="parents1">
+            <div>
+                <p>${USERID1.message}</p>
+                <span class="date1">${USERID1.date}</span>
+            </div>
+        </div>`;
+
+            comments1.innerHTML += published;
+            userComment1.value = "";
+            publishBtn1.classList.remove("abled");
+
+            saveComments(getCommentsArray(comments1), "comments1");
+            updateCommentCount(comments1, "comment1");
+        }
+
+
+        function getCommentsArray(container) {
+            const commentsArray = Array.from(container.querySelectorAll(".parents, .parents1"));
+            return commentsArray.map(comment => comment.outerHTML);
+        }
+        // function increaseLike() {
+        //     if (document.querySelector("#clicklike").innerHTML == "LIKED") {
+        //         document.querySelector("#clicklike").innerHTML = "NOT LIKED";
+        //         like.textContent = 15;
+        //     }
+        //     else {
+        //         document.querySelector("#clicklike").innerHTML = "LIKED";
+        //         like.textContent = 16;
+        //     }
+        // }
+        // function increaseLike1() {
+        //     if (document.querySelector("#clicklike1").innerHTML == "LIKED") {
+        //         document.querySelector("#clicklike1").innerHTML = "NOT LIKED";
+        //         like1.textContent = 53;
+        //     }
+        //     else {
+        //         document.querySelector("#clicklike1").innerHTML = "LIKED";
+        //         like1.textContent = 54;
+        //     }
+        // }
+
+
+        function increaseLike(idLikeCount, idLikeButton) {
+            const likeCount = document.getElementById(idLikeCount);
+            const likeButton = document.getElementById(idLikeButton);
+
+            if (likeButton.innerHTML === 'LIKED') {
+                likeButton.innerHTML = 'NOT LIKED';
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                likeButton.innerHTML = 'LIKED';
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            }
+
+            // Save the updated like state to local storage
+            saveLikeState(idLikeButton, idLikeCount);
+        }
+
+        function saveLikeState(idLikeButton, idLikeCount) {
+            const likeState = {
+                buttonState: document.getElementById(idLikeButton).innerHTML,
+                likeCount: document.getElementById(idLikeCount).textContent
+            };
+
+            localStorage.setItem(idLikeButton, JSON.stringify(likeState));
+        }
+
+        function loadLikeState(idLikeButton, idLikeCount) {
+            const likeState = JSON.parse(localStorage.getItem(idLikeButton));
+
+            if (likeState) {
+                document.getElementById(idLikeButton).innerHTML = likeState.buttonState;
+                document.getElementById(idLikeCount).textContent = likeState.likeCount;
+            }
+        }
+        // localStorage.clear();
+    </script>
+
+
+</body>
+
+</html>
